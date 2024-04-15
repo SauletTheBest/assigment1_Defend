@@ -1,26 +1,27 @@
-
+import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
-        String str = "hello";
-        String result = convertToUpperCase(str);
+        Scanner sc = new Scanner(System.in);
+        String str =  sc.nextLine();
+        String result = makeUpper(str);
         System.out.println(result);
     }
 
-    public static String convertToUpperCase(String str) {
-        return convertToUpperCaseHelper(str, 0);
+    public static String makeUpper(String str) {
+        return makeUpperMain(str, 0);
     }
 
-    private static String convertToUpperCaseHelper(String str, int index) {
-        if (index == str.length()) {
+    private static String makeUpperMain(String str, int i) {
+        if (i == str.length()) {
             return "";
         } else {
-            char currentChar = str.charAt(index);
+            char cChar = str.charAt(i);
             char[] upperCaseChars = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-            if (currentChar >= 'a' && currentChar <= 'z') {
-                currentChar = upperCaseChars[currentChar - 'a'];
+            if (cChar >= 'a' && cChar <= 'z') {
+                cChar = upperCaseChars[cChar - 'a'];
             }
-            return currentChar + convertToUpperCaseHelper(str, index + 1);
+            return cChar + makeUpperMain(str, i + 1);
         }
     }
 }
